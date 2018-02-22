@@ -11,6 +11,6 @@ Repository which holds different implementation of famous data structures and al
 * [Array based Stack](src/data/structure/Stack.java)
 * [Dynamic Array / Vector ](src/data/structure/Vector.java)
 * [Singly LinkedList](src/data/structure/SinglyLinkedList.java)
-* [Doubly LinkedList] (src/data/structure/DoublyLinkedList.java)
+* [Doubly LinkedList](src/data/structure/DoublyLinkedList.java)
 * [Stack - backed by Singly LinkedList](src/data/structure/StackSLL.java)
 * [Stack - backed by Doubly LinkedList](src/data/structure/StackDLL.java)
