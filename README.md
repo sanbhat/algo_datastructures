@@ -7,7 +7,7 @@ Repository which holds different implementation of famous data structures and al
 * [InsertionSort]((src/algo/sort/InsertionSort.java))
 * [ShellSort]((src/algo/sort/ShellSort.java))
 
-##Data Structures
+## Data Structures
 * [Array based Stack](src/data/structure/Stack.java)
 * [Dynamic Array / Vector ](src/data/structure/Vector.java)
 * [Singly LinkedList](src/data/structure/SinglyLinkedList.java)

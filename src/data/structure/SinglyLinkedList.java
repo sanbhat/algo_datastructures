@@ -3,6 +3,19 @@ package data.structure;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * Singly LinkedList is a LinkedList data structure with one link per node, pointing to
+ * the next node in the sequence. 
+ * <p><code>Node</code> structure her will have "data" and a single link pointing to next node
+ * in the sequence. Because of this simple structure, it is an easy to understand data structure.
+ * <p> With a single forward link, it is very easy to traverse forward, add elements, delete elements
+ * , But, bit difficult to traverse in reverse order, delete previous element etc.
+ * 
+ * 
+ * @author santhosh
+ *
+ * @param <T> - Type of data which the list will hold
+ */
 public class SinglyLinkedList<T> implements Iterable<T> {
 	
 	private class Node {

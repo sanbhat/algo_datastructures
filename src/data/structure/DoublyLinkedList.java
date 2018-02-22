@@ -4,6 +4,17 @@ import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
+/**
+ * Doubly LinkedList is a LinkedList data structure, with double connection named <b>previous</b> and <b>next</b>.
+ * It consists of a <code>Node</code> structure, which essentially holds tha "data", with link to the "next" node
+ * and the "previous" node, within the Linked list sequence.
+ * <p> Because of double link, it is very easy to traverse in each direction, add a new item,
+ * delete an existing item and reverse the list.
+ * 
+ * @author santhosh
+ *
+ * @param <T> - Type of data which the linked list should hold
+ */
 public class DoublyLinkedList<T>  implements Iterable<T> {
 
 	private class Node {

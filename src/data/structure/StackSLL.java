@@ -4,7 +4,10 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * Singly linked list based stack implementation
+ * * Stack is a Last In First Out (LIFO) data structure, which keeps the last
+ * inserted item in the head position, so that it can be returned when a call is made
+ * to retrieve an element from the stack.
+ * <p> There are several implementations of the stack. This one is "Singly LinkedList" based implementation.
  * 
  * @author santhosh
  * 
