@@ -4,8 +4,9 @@ Repository which holds different implementation of famous data structures and al
 ## Sorting
 * [BubbleSort](src/algo/sort/BubbleSort.java)
 * [SelectionSort](src/algo/sort/SelectionSort.java)
-* [InsertionSort]((src/algo/sort/InsertionSort.java))
-* [ShellSort]((src/algo/sort/ShellSort.java))
+* [InsertionSort](src/algo/sort/InsertionSort.java)
+* [ShellSort](src/algo/sort/ShellSort.java)
+* [MergeSort](src/algo/sort/MergeSort.java)
 
 ## Data Structures
 * [Array based Stack](src/data/structure/Stack.java)
