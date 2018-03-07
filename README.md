@@ -4,8 +4,8 @@ Repository which holds different implementation of famous data structures and al
 ## Sorting (with Complexity)
 
 Algorithm | Time Complexity Best | Time Complexity Average | Time Complexity Worst | Space Complexity
---- | --- | --- | ---
-[BubbleSort](src/algo/sort/BubbleSort.java) | &Omega; (n) | &Theta; (n^2) | &Omicron; (n^2) | &Omicron (1)
+--- | --- | --- | --- | ---
+[BubbleSort](src/algo/sort/BubbleSort.java) | &Omega; (n) | &Theta; (n^2) | &Omicron; (n^2) | &Omicron; (1)
 [SelectionSort](src/algo/sort/SelectionSort.java) | &Omega; (n^2) | &Theta; (n^2) | &Omicron; (n^2) | &Omicron; (1)
 [InsertionSort](src/algo/sort/InsertionSort.java) | &Omega; (n) | &Theta; (n^2) | &Omicron; (n^2) | &Omicron; (1) 
 [ShellSort](src/algo/sort/ShellSort.java) | &Omega; (n log(n)) | &Theta; (n log(n)^2) | &Omicron; (n log(n)^2) | &Omicron; (1) 
