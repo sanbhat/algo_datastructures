@@ -2,6 +2,8 @@ package algo.sort;
 
 import java.util.Arrays;
 
+import utils.Utility;
+
 /**
  * <b>Merge Sort</b> is a divide-and-conquer algorithm which divides the large input array
  * into smaller sub-arrays and sorts them independently. Finally it merges the sorted sub-arrays
@@ -60,6 +62,7 @@ public class MergeSort {
 		int[] arr = {1, 99, 17, 65, 767, 3, -22, -87, 6, 101, 12, 5, 152, 80, -33, 100, 2, 75, -10, 7, 999, -2, -4 };
 		MergeSort sort = new MergeSort();
 		sort.sort(arr);
+		Utility.isSorted(arr, true);
 		System.out.println(Arrays.toString(arr));
 	}
 

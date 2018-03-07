@@ -2,6 +2,8 @@ package algo.sort;
 
 import java.util.Arrays;
 
+import utils.Utility;
+
 /**
  * <b>Insertion sort</b> is another simple to understand sorting algorithm with almost same complexity
  * of <code>O (n ^ 2)</code> as Bubble sort and Selection sort, but has better performance.
@@ -31,7 +33,7 @@ public class InsertionSort {
 		int n = arr.length;
 		for(int i=1; i<n;  i++) {
 			for(int j=i; j>0 && arr[j] < arr[j-1]; j--) {
-				swap(arr, j, j-1);
+				Utility.swap(arr, j, j-1);
 			}
 		}
 	}
@@ -57,21 +59,18 @@ public class InsertionSort {
 		}
 	}
 
-	private void swap(int[] arr, int j, int i) {
-		int t = arr[j];
-		arr[j] = arr[i];
-		arr[i] = t;
-	}
 	
 	
 	public static void main(String[] args) {
 		int[] arr = {5 ,4, 3, 2, 1};
 		InsertionSort sort = new InsertionSort();
 		sort.sort1(arr);
+		Utility.isSorted(arr, true);
 		System.out.println(Arrays.toString(arr));
 		
 		arr =new int[] {5, 4, 1 , 3, 2};
 		sort.sort2(arr);
+		Utility.isSorted(arr, true);
 		System.out.println(Arrays.toString(arr));
 	}
 }

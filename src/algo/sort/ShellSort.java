@@ -2,6 +2,8 @@ package algo.sort;
 
 import java.util.Arrays;
 
+import utils.Utility;
+
 /**
  * <b>Shell sort</b> is an efficient sorting algorithm, which internally uses
  * <b>Insertion sort</b> technique to sort elements. The main difference between
@@ -29,23 +31,18 @@ public class ShellSort {
 		while(h >= 1) {
 			for(int i=h; i<n; i++) {
 				for(int j=i; j>=h && arr[j] < arr[j-1]; j-=h) {
-					swap(arr, j, j-1);
+					Utility.swap(arr, j, j-1);
 				}
 			}
 			h = h/3;
 		}
-	}
-
-	private void swap(int[] arr, int i, int j) {
-		int temp = arr[i];
-		arr[i] = arr[j];
-		arr[j] = temp;
 	}
 	
 	public static void main(String[] args) {
 		int[] arr = {99, 1, 10, -98, 101, 15, 7, 55, -48, 75, 0, -11, -12, 88, 9, 6, 3, 2, 101, 1002, -999, 1110, 28, 17, 43, 35, 87};
 		ShellSort sort = new ShellSort();
 		sort.sort(arr);
+		Utility.isSorted(arr, true);
 		System.out.println(Arrays.toString(arr));
 	}
 }

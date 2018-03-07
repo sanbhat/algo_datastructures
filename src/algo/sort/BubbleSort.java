@@ -2,6 +2,8 @@ package algo.sort;
 
 import java.util.Arrays;
 
+import utils.Utility;
+
 /**
  * <b>Bubble sort</b> is one of the most basic and simple to understand sorting algorithms. The
  * <b>Time complexity</b> of this algorithm is <code>O (n ^ 2) </code>, because it requires
@@ -25,30 +27,17 @@ public class BubbleSort {
 		for(int i=0; i<n; i++) {
 			for(int j = i+1; j<n; j++) {
 				if(input[i] > input[j]) {
-					swap(input, i, j);
+					Utility.swap(input, i, j);
 				}
 			}
 		}
-	}
-
-	/**
-	 * Swaps the elements within array. Remember even though, Java is pass by value, in case of 
-	 * <code>int[]</code>, the copy of "reference" to the <code>int[]</code> will be passed to the <code>swap</code> method.
-	 * Hence, the modification done to the array will reflect in the original array (which is parameter to the <code>sort</code> method)
-	 * @param array 
-	 * @param i
-	 * @param j
-	 */
-	private void swap(int[] array, int i, int j) {
-		int temp = array[i];
-		array[i] = array[j];
-		array[j] = temp;
 	}
 	
 	public static void main(String[] args) {
 		int[] arr = {5,4,3,2,1, 10, 99, 87, 6, 78, -1, -12, 100, 65, 120};
 		BubbleSort bubbleSort = new BubbleSort();
 		bubbleSort.sort(arr);
+		Utility.isSorted(arr, true);
 		System.out.println(Arrays.toString(arr));
 	}
 
