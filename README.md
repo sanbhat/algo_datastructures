@@ -11,6 +11,7 @@ Algorithm | Time Complexity Best | Time Complexity Average | Time Complexity Wor
 [ShellSort](src/algo/sort/ShellSort.java) | &Omega; (n log(n)) | &Theta; (n log(n)^2) | &Omicron; (n log(n)^2) | &Omicron; (1) 
 [MergeSort](src/algo/sort/MergeSort.java) | &Omega; (n log(n)) | &Theta; (n log(n)) | &Omicron; (n log(n)) | &Omicron; (n) 
 [QuickSort](src/algo/sort/QuickSort.java) | &Omega; (n log(n)) | &Theta; (n log(n)) | &Omicron; (n^2)) | &Omicron; ( log(n) )
+[HeapSort](src/algo/sort/HeapSort.java) | &Omega; (n log(n)) | &Theta; (n log(n)) | &Omicron; ( n log(n)) | &Omicron; ( 1 )
 
 ## Data Structures
 * [Array based Stack](src/data/structure/Stack.java)
