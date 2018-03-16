@@ -1,4 +1,4 @@
-package data.structure;
+package data.structure.queue;
 
 import java.util.Arrays;
 import java.util.Iterator;

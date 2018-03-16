@@ -1,4 +1,4 @@
-package data.structure;
+package data.structure.queue;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -7,23 +7,24 @@ import java.util.NoSuchElementException;
  * * Stack is a Last In First Out (LIFO) data structure, which keeps the last
  * inserted item in the head position, so that it can be returned when a call is made
  * to retrieve an element from the stack.
- * <p> There are several implementations of the stack. This one is "Singly LinkedList" based implementation.
+ * <p> There are several implementations of the stack. This one is "Doubly LinkedList" based implementation.
  * 
  * @author santhosh
- * 
- * @param <T> Type of the elements
  *
+ * @param <T> - Type of elements
  */
-public class StackSLL<T> implements Iterable<T> {
-
+public class StackDLL<T> implements Iterable<T>{
+	
 	private class Node {
 		
-		Node(T data) {
-			this.data = data;
+		T item;
+		
+		Node(T item) {
+			this.item = item;
 		}
 		
-		private T data;
-		private Node next;
+		Node prev;
+		Node next;
 	}
 	
 	private Node top;
@@ -33,9 +34,10 @@ public class StackSLL<T> implements Iterable<T> {
 	public void push(T item) {
 		Node newNode = new Node(item);
 		if(top == null) {
-			top =  newNode;
+			top = newNode;
 		} else {
 			newNode.next = top;
+			top.prev = newNode;
 			top = newNode;
 		}
 		size++;
@@ -44,46 +46,56 @@ public class StackSLL<T> implements Iterable<T> {
 	public T peek() {
 		if(top == null) {
 			return null;
-		} else{
-			return top.data;
+		} else {
+			return top.item;
 		}
 	}
 	
 	public T pop() {
 		if(top == null) {
 			throw new NoSuchElementException("Stack is empty!");
-		} 
-		T item = top.data;
-		Node prevTop = top;
-		top = top.next;
-		prevTop.next = null;
+		}
+		Node newTop = top.next;
+		top.next = null;
+		if(newTop != null) {
+			newTop.prev = null;
+		}
+		T item = top.item;
+		top = newTop;
 		size--;
 		return item;
-	}
-	
-	@Override
-	public Iterator<T> iterator() {
-		return new StackSLLItr();
 	}
 	
 	public int size() {
 		return size;
 	}
- 	
+
+	@Override
+	public Iterator<T> iterator() {
+		return new StackDLLItr();
+	}
+	
+	
+	
 	@Override
 	public String toString() {
-		String s = "";
+		StringBuilder sb = new StringBuilder();
 		for(Iterator<T> i = iterator(); i.hasNext(); ) {
-			s += i.next() + " -> ";
+			sb.append(i.next()).append(" | ");
 		}
-		return s;
+		if(sb.indexOf("|") != -1) {
+			sb.deleteCharAt(sb.lastIndexOf("|"));
+		}
+		return sb.toString();
 	}
 
-	private class StackSLLItr implements Iterator<T> {
+
+
+	private class StackDLLItr implements Iterator<T> {
 		
 		private Node current;
 		
-		public StackSLLItr() {
+		private StackDLLItr() {
 			this.current = top;
 		}
 
@@ -95,17 +107,18 @@ public class StackSLL<T> implements Iterable<T> {
 		@Override
 		public T next() {
 			if(current == null) {
-				throw new NoSuchElementException("There is no element!");
+				throw new NoSuchElementException("No more items to iterate");
 			}
-			T item = current.data;
+			
+			T item = current.item;
 			current = current.next;
 			return item;
 		}
-
+		
 	}
 	
 	public static void main(String[] args) {
-		StackSLL<Character> stack = new StackSLL<>();
+		StackDLL<Character> stack = new StackDLL<>();
 		stack.push('A');
 		stack.push('B');
 		stack.push('C');

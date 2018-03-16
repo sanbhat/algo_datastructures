@@ -1,6 +1,6 @@
 package main;
 
-import data.structure.Vector;
+import data.structure.list.Vector;
 
 public class Main {
 

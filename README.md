@@ -14,9 +14,20 @@ Algorithm | Time Complexity Best | Time Complexity Average | Time Complexity Wor
 [HeapSort](src/algo/sort/HeapSort.java) | &Omega; (n log(n)) | &Theta; (n log(n)) | &Omicron; ( n log(n)) | &Omicron; ( 1 )
 
 ## Data Structures
-* [Array based Stack](src/data/structure/Stack.java)
-* [Dynamic Array / Vector ](src/data/structure/Vector.java)
-* [Singly LinkedList](src/data/structure/SinglyLinkedList.java)
-* [Doubly LinkedList](src/data/structure/DoublyLinkedList.java)
-* [Stack - backed by Singly LinkedList](src/data/structure/StackSLL.java)
-* [Stack - backed by Doubly LinkedList](src/data/structure/StackDLL.java)
+
+#### Array, List, Dynamic array
+* [Dynamic Array / Vector ](src/data/structure/list/Vector.java)
+* [Singly LinkedList](src/data/structure/list/SinglyLinkedList.java)
+* [Doubly LinkedList](src/data/structure/list/DoublyLinkedList.java)
+
+#### Stack / Queue / Heap
+* [Array based Stack](src/data/structure/queue/Stack.java)
+* [Stack - backed by Singly LinkedList](src/data/structure/queue/StackSLL.java)
+* [Stack - backed by Doubly LinkedList](src/data/structure/queue/StackDLL.java)
+* [Max Heap](src/data/structure/queue/MaxHeap.java) which extends [Heap](src/data/structure/queue/Heap.java)
+* [Min Heap](src/data/structure/queue/MinHeap.java) which extends [Heap](src/data/structure/queue/Heap.java)
+
+
+
+
+

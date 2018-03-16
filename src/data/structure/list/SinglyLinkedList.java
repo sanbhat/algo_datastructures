@@ -1,4 +1,4 @@
-package data.structure;
+package data.structure.list;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

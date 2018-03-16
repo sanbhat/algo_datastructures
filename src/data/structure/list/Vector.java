@@ -1,4 +1,4 @@
-package data.structure;
+package data.structure.list;
 
 /**
  * Vector or ArrayList, is an auto resizing array based data structure, which is backed by an
