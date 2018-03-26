@@ -117,41 +117,4 @@ public class StackDLL<T> implements Iterable<T>{
 		
 	}
 	
-	public static void main(String[] args) {
-		StackDLL<Character> stack = new StackDLL<>();
-		stack.push('A');
-		stack.push('B');
-		stack.push('C');
-		stack.push('D');
-		
-		System.out.println(stack.peek());
-		
-		stack.pop();
-		stack.pop();
-		
-		stack.push('E');
-		stack.push('F');
-		
-		System.out.println(stack.size());
-		
-		stack.pop();
-		stack.pop();
-		stack.pop();
-		stack.pop();
-
-		
-		stack.push('A');
-		stack.push('B');
-		stack.push('C');
-		stack.push('D');
-		stack.push('E');
-		stack.push('F');
-		stack.push('H');
-		stack.push('I');
-		stack.push('J');
-		stack.push('K');
-		stack.push('L');
-		stack.push('M');
-	}
-
 }

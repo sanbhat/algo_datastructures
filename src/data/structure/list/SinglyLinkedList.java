@@ -201,27 +201,4 @@ public class SinglyLinkedList<T> implements Iterable<T> {
 	}
 	
 	
-	public static void main(String[] args) {
-		SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
-		
-		list.add(2);
-		list.addToFirst(1);
-		list.addToLast(3);
-		
-		list.remove();
-		list.removeLast();
-		list.add(4);
-		
-		list.removeFirst();
-		
-		list.addAfter(4, 5);
-		list.addAfter(5, 6);
-		
-		System.out.println(list);
-		
-		list.reverse();
-		
-		System.out.println(list);
-	}
-
 }

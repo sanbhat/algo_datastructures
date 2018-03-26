@@ -69,6 +69,10 @@ public abstract class Heap<T extends Comparable<T>> {
 		return Arrays.copyOf(arr, arr.length);
 	}
 	
+	public boolean isEmpty() {
+		return size() == -1;
+	}
+	
 	@Override
 	public String toString() {
 		return "Heap " + Arrays.toString(arr);

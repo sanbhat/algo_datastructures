@@ -205,37 +205,4 @@ public class DoublyLinkedList<T>  implements Iterable<T> {
 		
 	}
 
-	public static void main(String[] args) {
-		DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
-		list.add(1);
-		list.add(3);
-		list.addAfter(3, 7);
-		list.addAfter(3, 5);
-		list.remove();
-		list.add(7);
-		
-		ListIterator<Integer> li = list.iterator();
-		if(li.hasNext()) {
-			System.out.println("Next- " + li.next() + " " + li.nextIndex());
-		}
-		if(li.hasNext()) {
-			System.out.println("Next- " + li.next() + " " + li.nextIndex());
-		}
-		li.set(33);
-		li.add(44);
-		if(li.hasPrevious()) {
-			System.out.println("Prev- " + li.previous() + " " + li.previousIndex());
-		}
-		if(li.hasPrevious()) {
-			System.out.println("Prev- " + li.previous() + " " + li.previousIndex());
-		}
-		if(li.hasPrevious()) {
-			System.out.println("Prev- " + li.previous() + " " + li.previousIndex());
-		}
-		if(li.hasPrevious()) {
-			System.out.println("Prev- " + li.previous() + " " + li.previousIndex());
-		}
-		
-		
-	}
 }

@@ -1,5 +1,7 @@
 package data.structure.list;
 
+import java.util.Arrays;
+
 /**
  * Vector or ArrayList, is an auto resizing array based data structure, which is backed by an
  * actual array. This class is generic , which means the data structure can hold elements of any type. 
@@ -93,5 +95,9 @@ public class Vector<T> {
 		Object[] newTempArr = new Object[newSize];
 		System.arraycopy(array, 0, newTempArr, 0, size);
 		array = newTempArr;
+	}
+	
+	public String toString() {
+		return "Vector " + Arrays.toString(this.array);
 	}
 }
