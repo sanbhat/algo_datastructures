@@ -89,17 +89,17 @@ There are two ways in which Graphs can be represented.
 
 There are two ways in which the graph's vertices can be traversed for searching purpose. 
 
-** Depth First Search ** - In DFS, the child vertices of each vertex are visited first, until all the vertex are covered OR the leaf vertex is reached. Once the vertex has no more children, then backtracking is done and other children are visited / searched.
+**Depth First Search** - In DFS, the child vertices of each vertex are visited first, until all the vertex are covered OR the leaf vertex is reached. Once the vertex has no more children, then backtracking is done and other children are visited / searched.
 
-** Breadth First Search ** - In BFS, first all the children of a vertex are visited one after the other, once finished, then children at the next level are visited.
+**Breadth First Search** - In BFS, first all the children of a vertex are visited one after the other, once finished, then children at the next level are visited.
   
    
 
 #### Prim's algorithm to find Minimum Spanning Tree
 
-** Spanning Tree ** - Spanning tree of a graph is a sub-graph, where all the vertices of the graph are connected by edges without any cycle.
+**Spanning Tree** - Spanning tree of a graph is a sub-graph, where all the vertices of the graph are connected by edges without any cycle.
 
-** Minimum Spanning Tree ** - Is a spanning tree calculated from the *undirected weighted graph*, where the weight of the edges connecting the spanning tree is minimum.
+**Minimum Spanning Tree** - Is a spanning tree calculated from the *undirected weighted graph*, where the weight of the edges connecting the spanning tree is minimum.
 
 [Prim's algorithm](src/data/structure/graph/LazyPrimMST.java) is a Greedy algorithm, which starts with a vertex to build a MST, and then keeps adding it more connections which have the least weight.
 
