@@ -1,6 +1,6 @@
 package data.structure.graph;
 
-public class Main {
+public class GraphTest {
 	
 	public static void main(String[] args) {
 
@@ -85,6 +85,29 @@ public class Main {
 			System.out.println(e);
 		}
 
+		System.out.println("*************** Union Find *********************");
+		
+		UnionFind<Integer> uf = new UnionFind<>();
+		uf.union(0, 1);
+		uf.union(1, 2);
+		uf.union(2, 3);
+		
+		System.out.println("Is 0 and 3 connected? - " + uf.find(0, 3));
+		
+		uf.union(5, 6);
+		uf.union(8, 9);
+		uf.union(4, 5);
+		uf.union(9, 4);
+		
+		System.out.println("Is 4 and 9 connected? - " + uf.find(4, 9));
+		System.out.println("Is 8 and 4 connected? - " + uf.find(8, 4));
+		System.out.println("Is 9 and 0 connected? - " + uf.find(0, 9));
+		
+		uf.union(1, 4);
+		System.out.println("Is 9 and 0 connected? - " + uf.find(0, 9));
+		
+		
 	}
+	
 
 }

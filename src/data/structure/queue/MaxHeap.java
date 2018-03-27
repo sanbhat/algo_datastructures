@@ -1,7 +1,6 @@
 package data.structure.queue;
 
 import java.util.Arrays;
-import java.util.Random;
 
 /**
  * Max Heap implementation of the {@link Heap} data structure. 

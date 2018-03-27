@@ -10,8 +10,24 @@ Repository which holds different implementation of famous data structures and al
 	java version "1.8.0_131"
 	Java(TM) SE Runtime Environment (build 1.8.0_131-b11)
 	Java HotSpot(TM) 64-Bit Server VM (build 25.131-b11, mixed mode)
+	
+## Table of Content
 
-## Sorting (with Complexity)
+1. [Sorting algorithms](#sorting_algo)
+2. [Data Structures](#ds)
+	1. [Basic Data Structures](#basicds)
+		1. [Dynamic Array](#basicds_array)
+    	2. [Linked List](#basicds_linkedlist)
+    	3. [Stack](#basicds_stack)
+    	4. [Heap](#basicds_heap)
+	2. [Advanced Data Structures](#advanceds)
+	    1. [Graphs](#advanceds_graphs)
+	    2. [Prim's MST](#advanceds_prims)
+	    3. [UnionFind](#advanceds_unionfind)
+
+<a id='sorting_algo' />
+
+## Sorting algorithms 
 
 Algorithm | Time Complexity Best | Time Complexity Average | Time Complexity Worst | Space Complexity | Is [Stable?](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability)
 --- | --- | --- | --- | --- | ---
@@ -23,16 +39,25 @@ Algorithm | Time Complexity Best | Time Complexity Average | Time Complexity Wor
 [QuickSort](src/algo/sort/QuickSort.java) | &Omega; (n log(n)) | &Theta; (n log(n)) | &Omicron; (n^2)) | &Omicron; (log(n)) | No
 [HeapSort](src/algo/sort/HeapSort.java) | &Omega; (n log(n)) | &Theta; (n log(n)) | &Omicron; (n log(n)) | &Omicron; (1)  | No
 
+<a id='ds' />
+
 ## Data Structures
 
 Data structures are a particular way of organizing the data in a computer, so that it can be accessed and modified efficiently.
 
+<a id='basicds' />
+
 ### Basic Data Structures
+
+
+<a id='basicds_array' />
 
 #### Dynamic array
 Dynamic array is an array based data-structure (insert - &Omicron;(1) and deleteAtIndex - &Omicron;(1)), which adjusts its size and rearranges the items (re-indexing), as and when data gets added or deleted. 
 
 * [Dynamic Array / Vector ](src/data/structure/list/Vector.java)
+
+<a id='basicds_linkedlist' />
 
 #### Linked List 
 Linked List is a special data structure of connected items, represented by a special structure called as `Node`. A `Node` structure stores the data as well as a link (or memory address) to the next `Node` item present in the sequence.
@@ -42,6 +67,8 @@ In singly linked list, `Node` will have a pointer to the `Node` present ahead of
 * [Singly LinkedList](src/data/structure/list/SinglyLinkedList.java)
 * [Doubly LinkedList](src/data/structure/list/DoublyLinkedList.java)
 
+<a id='basicds_stack' />
+
 #### Stack 
 Stack is a popular data structure in which items inserted last will sit on top of the structure, pushing the previously inserted items to the bottom. It gives convenient methods to to check what is at the top of the structure (`peek()`)? and to **get** and **delete** the item on the top of the structure `pop()`, with a time complexity of - &Omicron;(1). It is also called as *LIFO* data-structure. Following are some different implementations of stack, backed by array, singly linked list and doubly linked list.
 
@@ -49,14 +76,19 @@ Stack is a popular data structure in which items inserted last will sit on top o
 * [Stack - backed by Singly LinkedList](src/data/structure/queue/StackSLL.java)
 * [Stack - backed by Doubly LinkedList](src/data/structure/queue/StackDLL.java)
 
+<a id='basicds_heap' />
+
 #### Heap
 Heap is a tree based data structure, where each node follows the heap rule. Heaps can be of types - **Min** and **Max**. In **Min** heap, if a node within the tree is not a leaf node, then its *key* will always be less than its children. In this way the root of the tree will always be the item, with the least key among all the items present in the heap. **Max** heap is just the opposite, where the root node's *key* is the highest, and all non-leaf nodes will always be greater than their children.
 
 * [Max Heap](src/data/structure/queue/MaxHeap.java) which extends [Heap](src/data/structure/queue/Heap.java)
 * [Min Heap](src/data/structure/queue/MinHeap.java) which extends [Heap](src/data/structure/queue/Heap.java)
 
+<a id='advanceds' />
 
 ### Advanced Data Structures
+
+<a id='advanceds_graphs' />
 
 #### Graphs
 
@@ -93,7 +125,7 @@ There are two ways in which the graph's vertices can be traversed for searching 
 
 **Breadth First Search** - In BFS, first all the children of a vertex are visited one after the other, once finished, then children at the next level are visited.
   
-   
+<a id='advanceds_prims' />   
 
 #### Prim's algorithm to find Minimum Spanning Tree
 
@@ -102,6 +134,18 @@ There are two ways in which the graph's vertices can be traversed for searching 
 **Minimum Spanning Tree** - Is a spanning tree calculated from the *undirected weighted graph*, where the weight of the edges connecting the spanning tree is minimum.
 
 [Prim's algorithm](src/data/structure/graph/LazyPrimMST.java) is a Greedy algorithm, which starts with a vertex to build a MST, and then keeps adding it more connections which have the least weight.
+
+<a id='basicds_advanceds' />
+
+<a id='advanceds_unionfind' />
+
+#### UnionFind
+
+[UnionFind](src/data/structure/graph/UnionFind.java) (or [Disjoint-Set data structure](https://en.wikipedia.org/wiki/Disjoint-set_data_structure)) is a data structure which helps to connect components to form  a set, to track disjoint sets and to see if two components are connected (part of a same set) or not.
+
+The application of this data structure varies from, finding if two Computers are connected within a network (either directly or indirectly), or variable name equivalence tracking in some languages (checking if two aliases point to same variable) to name a few. [This article](https://www.hackerearth.com/practice/notes/disjoint-set-union-union-find/) gives a good insight into the data structure and how it evolved to become more efficient! 
+
+It is also used to detect cycle within the graph, which is used as part of Kruskal's MST algorithm.
 
 
 

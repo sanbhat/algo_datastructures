@@ -2,7 +2,7 @@ package data.structure.list;
 
 import java.util.ListIterator;
 
-public class Main {
+public class ListTest {
 
 	public static void main(String[] args) {
 		System.out.println("******************** Vector *********************");

@@ -1,7 +1,6 @@
 package data.structure.queue;
 
 import java.util.Arrays;
-import java.util.Random;
 
 /**
  * Min Heap implementation of {@link Heap} data structure
