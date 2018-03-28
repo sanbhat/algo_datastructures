@@ -1,6 +1,7 @@
 package data.structure.queue;
 
 import java.util.Arrays;
+import java.util.Collection;
 
 import utils.Utility;
 
@@ -30,11 +31,25 @@ public abstract class Heap<T extends Comparable<T>> {
 	}
 	
 	@SuppressWarnings("unchecked")
+	public Heap(Collection<T> items, boolean isMaxHeap) {
+		if(items == null) {
+			throw new IllegalArgumentException("Items are null!");
+		}
+		this.arr = (T[]) new Comparable[items.size()];
+		this.index = -1;
+		this.isMaxHeap = isMaxHeap;
+		for(T item : items) {
+			insert(item);
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
 	public Heap(int initialSize, boolean isMaxHeap) {
-		arr = (T[])new Comparable[initialSize];
-		index = -1;
+		this.arr = (T[])new Comparable[initialSize];
+		this.index = -1;
 		this.isMaxHeap = isMaxHeap;
 	}
+	
 
 	public int size(){ 
 		return index;

@@ -1,6 +1,7 @@
 package data.structure.queue;
 
 import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * Max Heap implementation of the {@link Heap} data structure. 
@@ -15,6 +16,10 @@ public class MaxHeap<T extends Comparable<T>> extends Heap<T> {
 	
 	public MaxHeap() {
 		super(true);
+	}
+	
+	public MaxHeap(Collection<T> items) {
+		super(items, true);
 	}
 	
 	public MaxHeap(int initialSize) {

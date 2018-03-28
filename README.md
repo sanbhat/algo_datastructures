@@ -13,7 +13,7 @@ Repository which holds different implementation of famous data structures and al
 	
 ## Table of Content
 
-1. [Sorting algorithms](#sorting_algo)
+1. [Sorting Algorithms](#sorting_algo)
 2. [Data Structures](#ds)
 	1. [Basic Data Structures](#basicds)
 		1. [Dynamic Array](#basicds_array)
@@ -22,12 +22,14 @@ Repository which holds different implementation of famous data structures and al
     	4. [Heap](#basicds_heap)
 	2. [Advanced Data Structures](#advanceds)
 	    1. [Graphs](#advanceds_graphs)
-	    2. [Prim's MST](#advanceds_prims)
-	    3. [UnionFind](#advanceds_unionfind)
+	    2. [UnionFind](#advanceds_unionfind)
+	    3. [Spanning Tree and MST](#advanceds_spanning)
+	    4. [Prim's MST](#advanceds_prims)
+	    5. [Kruskal's MST](#advanceds_kruskal)
 
 <a id='sorting_algo' />
 
-## Sorting algorithms 
+## Sorting Algorithms
 
 Algorithm | Time Complexity Best | Time Complexity Average | Time Complexity Worst | Space Complexity | Is [Stable?](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability)
 --- | --- | --- | --- | --- | ---
@@ -125,18 +127,6 @@ There are two ways in which the graph's vertices can be traversed for searching 
 
 **Breadth First Search** - In BFS, first all the children of a vertex are visited one after the other, once finished, then children at the next level are visited.
   
-<a id='advanceds_prims' />   
-
-#### Prim's algorithm to find Minimum Spanning Tree
-
-**Spanning Tree** - Spanning tree of a graph is a sub-graph, where all the vertices of the graph are connected by edges without any cycle.
-
-**Minimum Spanning Tree** - Is a spanning tree calculated from the *undirected weighted graph*, where the weight of the edges connecting the spanning tree is minimum.
-
-[Prim's algorithm](src/data/structure/graph/LazyPrimMST.java) is a Greedy algorithm, which starts with a vertex to build a MST, and then keeps adding it more connections which have the least weight.
-
-<a id='basicds_advanceds' />
-
 <a id='advanceds_unionfind' />
 
 #### UnionFind
@@ -147,6 +137,24 @@ The application of this data structure varies from, finding if two Computers are
 
 It is also used to detect cycle within the graph, which is used as part of Kruskal's MST algorithm.
 
+<a id='advanceds_kruskal' />
 
+<a id='advanceds_spanning' />  
 
+#### Spanning Tree and MST
 
+**Spanning Tree** - Spanning tree of a graph is a sub-graph, where all the vertices of the graph are connected by edges without any cycle.
+
+**Minimum Spanning Tree** - Is a spanning tree calculated from the undirected weighted graph, where the weight of the edges connecting the spanning tree is minimum.
+
+<a id='advanceds_prims' />   
+
+#### Prim's algorithm to find Minimum Spanning Tree
+
+[Prim's algorithm](src/data/structure/graph/LazyPrimMST.java) is a Greedy algorithm, which starts with a vertex to build a MST, and then keeps adding it more connections which have the least weight.
+
+<a id='advanceds_kruskals' />  
+
+#### Kruskal's algorithm to find Minimum Spanning Tree
+
+[Kruskal's algorithm](src/data/structure/graph/KruskalMST.java) is a simple algorithm, which first orders all the edges of the graph in the ascending order, then adds them to the MST,  by making sure that, edge to be added to the mst, does NOT form a cycle with already existing edges in MST. The check of determining cycle is performed using `UnionFind` data structure.

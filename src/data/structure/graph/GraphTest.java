@@ -106,7 +106,14 @@ public class GraphTest {
 		uf.union(1, 4);
 		System.out.println("Is 9 and 0 connected? - " + uf.find(0, 9));
 		
+		System.out.println("**************** Undirected Weighted Graph - Kruskal's MST **************************");
+
+		KruskalMST<Integer> kruskalMST = new KruskalMST<>();
+		mst = kruskalMST.buildMst(ewGraph);
 		
+		for(Edge<Integer> e : mst) {
+			System.out.println(e);
+		}
 	}
 	
 

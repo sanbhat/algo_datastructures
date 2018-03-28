@@ -12,7 +12,7 @@ import data.structure.queue.MinHeap;
  * The algorithm works in the following way </br>
  * <ul>
  * <li> First it starts with a vertex, passed as <code>start</code> argument to the method <code>buildMst(...)</code>
- * <li> The first vetex will be visited, that is, it will be <code>marked</code> as visited
+ * <li> The first vertex will be visited, that is, it will be <code>marked</code> as visited
  * <li> All the adjacent vertices of the first vertex will be iterated and if they are not already <b>marked</b> as visited, then, they
  * will be placed to the <code>minHeap</code>.
  * <li> Next <code>Edge</code> with minimum weight will be retrieved from the <code>minHeap</code> until the heap becomes empty and following
@@ -40,12 +40,13 @@ public class LazyPrimMST<T> {
 	private MinHeap<Edge<T>> minHeap;
 	
 	public LazyPrimMST() {
-		marked = new HashSet<>();
-		mst = new LinkedList<>();
-		minHeap = new MinHeap<>();
 	}
 	
 	public Iterable<Edge<T>> buildMst(EdgeWeightedGraph<T> graph, T start) {
+		marked = new HashSet<>();
+		mst = new LinkedList<>();
+		minHeap = new MinHeap<>();
+		
 		visit(graph, start);
 		
 		while(!minHeap.isEmpty()) {

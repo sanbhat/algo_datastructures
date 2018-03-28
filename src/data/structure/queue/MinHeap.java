@@ -1,6 +1,7 @@
 package data.structure.queue;
 
 import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * Min Heap implementation of {@link Heap} data structure
@@ -14,6 +15,10 @@ public class MinHeap<T extends Comparable<T>> extends Heap<T> {
 
 	public MinHeap() {
 		super(false);
+	}
+	
+	public MinHeap(Collection<T> items) {
+		super(items, false);
 	}
 	
 	public MinHeap(int initialSize) {

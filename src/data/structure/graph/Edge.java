@@ -10,13 +10,13 @@ package data.structure.graph;
  *
  * @param <T> type of vertex
  */
-public class Edge<T> implements Comparable<Edge<T>>{
+public final class Edge<T> implements Comparable<Edge<T>>{
 
-	private T v;
+	private final T v;
 	
-	private T w;
+	private final T w;
 	
-	private int weight;
+	private final int weight;
 	
 	public Edge(T v, T w, int weight) {
 		this.v = v;

@@ -1,5 +1,6 @@
 package data.structure.graph;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -52,4 +53,11 @@ public class EdgeWeightedGraph<T> {
 		return adj.get(v);
 	}
 	
+	public Collection<Edge<T>> edges() {
+		Set<Edge<T>> allEdges = new HashSet<>();
+		for(Set<Edge<T>> set : adj.values()) {
+			allEdges.addAll(set);
+		}
+		return allEdges;
+	}
 }

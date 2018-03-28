@@ -34,7 +34,7 @@ public class UnionFind<T> {
 	}
 	
 	private T root(T i) {
-		while(!unions.get(i).equals(i)) {
+		while(unions.get(i) != null && !unions.get(i).equals(i)) {
 			i = unions.get(unions.get(i));
 		}
 		return i;
@@ -62,7 +62,7 @@ public class UnionFind<T> {
 			T root_i = root(i);
 			T root_j = root(j);
 
-			if(size.get(root_i) < size.get(root_i)) {
+			if(size.get(root_i) < size.get(root_j)) {
 				unions.put(root_i, root_j);
 				size.put(root_j, size.get(root_j) + size.get(root_i));
 			} else {
