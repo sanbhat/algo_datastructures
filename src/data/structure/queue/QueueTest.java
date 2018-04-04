@@ -1,35 +1,8 @@
 package data.structure.queue;
 
-import java.util.Random;
-
 public class QueueTest {
 
 	public static void main(String[] args) {
-		System.out.println("****************** Max Heap *****************");
-		MaxHeap<Integer> maxHeap = new MaxHeap<>();
-		Random random = new Random();
-		for(int i=0; i<10; i++) {
-			maxHeap.insert(random.nextInt(100));
-		}
-		
-		System.out.println(maxHeap);
-		
-		for(int i=0; i<10; i++) {
-			System.out.println(maxHeap.getMax() + " " +maxHeap.delMax());
-		}
-		
-		System.out.println("****************** Max Heap *****************");
-		
-		MinHeap<Integer> minHeap = new MinHeap<>();
-		for(int i=0; i<10; i++) {
-			minHeap.insert(random.nextInt(100));
-		}
-		
-		System.out.println(minHeap);
-		
-		for(int i=0; i<10; i++) {
-			System.out.println(minHeap.getMin() + " " +minHeap.delMin() + " , Current Size - " + minHeap.size());
-		}
 		
 		System.out.println("***************** Stack (Array backed) ****************");
 		

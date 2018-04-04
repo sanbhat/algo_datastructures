@@ -1,4 +1,4 @@
-package data.structure.queue;
+package data.structure.heap;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -25,10 +25,6 @@ public abstract class Heap<T extends Comparable<T>> {
 	private int index;
 	
 	private boolean isMaxHeap;
-	
-	public Heap(boolean isMaxHeap) {
-		this(10, isMaxHeap);
-	}
 	
 	@SuppressWarnings("unchecked")
 	public Heap(Collection<T> items, boolean isMaxHeap) {
@@ -60,8 +56,7 @@ public abstract class Heap<T extends Comparable<T>> {
 			throw new RuntimeException("Heap is full!");
 		}
 		arr[++index] = item;
-		for(int i = index/2; i>=0; i--) 
-			heapify(i);
+		heapifyBottomUp();
 	}
 	
 	protected T del() {
@@ -71,9 +66,18 @@ public abstract class Heap<T extends Comparable<T>> {
 		T item = (T)arr[0];
 		arr[0] = arr[index];
 		arr[index] = null;
-		heapify(0);
+		heapifyTopDown();
 		index--;
 		return item;
+	}
+	
+	protected void heapifyBottomUp() {
+		for(int i = index/2; i>=0; i--) 
+			heapify(i);
+	}
+	
+	protected void heapifyTopDown() {
+		heapify(0);
 	}
 	
 	protected T get() {
@@ -93,23 +97,27 @@ public abstract class Heap<T extends Comparable<T>> {
 		return "Heap " + Arrays.toString(arr);
 	}
 
-	private void heapify(int i) {
-		int largest = i;
+	protected void heapify(int i) {
+		int root = i;
 		int l = 2 * i + 1;
 		int r = 2 * i + 2;
 		
-		if(l < arr.length && arr[l] != null && shouldMoveUp(arr[l], arr[largest])) {
-			largest = l;
+		if(l < arr.length && arr[l] != null && shouldMoveUp(arr[l], arr[root])) {
+			root = l;
 		}
 		
-		if(r < arr.length && arr[r] != null && shouldMoveUp(arr[r], arr[largest])) {
-			largest = r;
+		if(r < arr.length && arr[r] != null && shouldMoveUp(arr[r], arr[root])) {
+			root = r;
 		}
 		
-		if(i !=  largest) {
-			Utility.swap(arr, i, largest);
-			heapify(largest);
+		if(i !=  root) {
+			swap(arr, i, root);
+			heapify(root);
 		}
+	}
+	
+	protected void swap(T[] arr, int i, int j) {
+		Utility.swap(arr, i, j);
 	}
 	
 	private boolean shouldMoveUp(T child, T parent) {
@@ -119,5 +127,10 @@ public abstract class Heap<T extends Comparable<T>> {
 			return Utility.isLess(child, parent);
 		}
 	}
+
+	protected T[] getArr() {
+		return arr;
+	}
+
 
 }

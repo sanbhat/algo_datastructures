@@ -3,7 +3,7 @@ package data.structure.graph;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import data.structure.queue.MinHeap;
+import data.structure.heap.MinHeap;
 
 /**
  * <b>Kruskal's MST</b> algorithm is, one of the simplest graph MST algorithms to understand and implement, 

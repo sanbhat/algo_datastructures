@@ -1,4 +1,4 @@
-package data.structure.queue;
+package data.structure.heap;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -14,7 +14,7 @@ import java.util.Collection;
 public class MinHeap<T extends Comparable<T>> extends Heap<T> {
 
 	public MinHeap() {
-		super(false);
+		super(10, false);
 	}
 	
 	public MinHeap(Collection<T> items) {

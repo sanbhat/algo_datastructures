@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
-import data.structure.queue.MinHeap;
+import data.structure.heap.MinHeap;
 
 /**
  * This is a Lazy implementation of Prim's algorithm of finding the <b>Minimum Spanning Tree</b> using <b>Minimum Priority Queue</b>.

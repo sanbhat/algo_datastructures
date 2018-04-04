@@ -11,6 +11,10 @@ Repository which holds different implementation of famous data structures and al
 	Java(TM) SE Runtime Environment (build 1.8.0_131-b11)
 	Java HotSpot(TM) 64-Bit Server VM (build 25.131-b11, mixed mode)
 	
+## Disclaimer
+
+The code written in this repository are not necessarily the original work of me (except some of them). Many of them are referenced by books or tutorial sites such as Algorithms 4th Edition by Robert Sedgewick, Kevin Wayne, www.geeksforgeeks.com, www.hackerearth.com etc.
+	
 ## Table of Content
 
 1. [Sorting Algorithms](#sorting_algo)
@@ -20,12 +24,14 @@ Repository which holds different implementation of famous data structures and al
     	2. [Linked List](#basicds_linkedlist)
     	3. [Stack](#basicds_stack)
     	4. [Heap](#basicds_heap)
+    	5. [IndexMinHeap](#index_min_heap)
 	2. [Advanced Data Structures](#advanceds)
 	    1. [Graphs](#advanceds_graphs)
 	    2. [UnionFind](#advanceds_unionfind)
 	    3. [Spanning Tree and MST](#advanceds_spanning)
 	    4. [Prim's MST](#advanceds_prims)
 	    5. [Kruskal's MST](#advanceds_kruskal)
+	    6. [Dijkstra's SP](#advanceds_dijkstra)
 
 <a id='sorting_algo' />
 
@@ -83,8 +89,14 @@ Stack is a popular data structure in which items inserted last will sit on top o
 #### Heap
 Heap is a tree based data structure, where each node follows the heap rule. Heaps can be of types - **Min** and **Max**. In **Min** heap, if a node within the tree is not a leaf node, then its *key* will always be less than its children. In this way the root of the tree will always be the item, with the least key among all the items present in the heap. **Max** heap is just the opposite, where the root node's *key* is the highest, and all non-leaf nodes will always be greater than their children.
 
-* [Max Heap](src/data/structure/queue/MaxHeap.java) which extends [Heap](src/data/structure/queue/Heap.java)
-* [Min Heap](src/data/structure/queue/MinHeap.java) which extends [Heap](src/data/structure/queue/Heap.java)
+* [Max Heap](src/data/structure/heap/MaxHeap.java) which extends [Heap](src/data/structure/heap/Heap.java)
+* [Min Heap](src/data/structure/heap/MinHeap.java) which extends [Heap](src/data/structure/heap/Heap.java)
+
+<a id='index_min_heap' />
+
+#### Index Min Heap
+[IndexMinHeap](src/data/structure/heap/IndexMinHeap.java) is an extension of Min Heap implementation which associates a particular `Index` with the `Key`. The `Key` will be inserted and used to maintain the heap order, and the `Index` will be mapped with the key, to have a 1-1 mapping between them. When a method such as `getMin()` and `delMin()` is called, the `Index` corresponding to the *minimum* key will be returned by the method.
+
 
 <a id='advanceds' />
 
@@ -158,3 +170,9 @@ It is also used to detect cycle within the graph, which is used as part of Krusk
 #### Kruskal's algorithm to find Minimum Spanning Tree
 
 [Kruskal's algorithm](src/data/structure/graph/KruskalMST.java) is a simple algorithm, which first orders all the edges of the graph in the ascending order, then adds them to the MST,  by making sure that, edge to be added to the mst, does NOT form a cycle with already existing edges in MST. The check of determining cycle is performed using `UnionFind` data structure.
+
+<a id='advanceds_dijkstra' />  
+
+#### Dijkstra's algorithm to find Shortest Path
+
+[Dijkstra's algorithm](src/data/structure/graph/DijkstraSP.java) is an efficient algorithm, which finds shortest path from a **source** vertex, to all the verties it is connected to (directly / indirectly), by forming a Shortest Path Tree. It takes help of `IndexMinHeap` to get the next vertex to process (thus achieving the &Omicron; (E log V) ), along with a process called as **Edge Relaxation**.

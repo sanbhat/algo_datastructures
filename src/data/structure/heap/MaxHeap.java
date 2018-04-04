@@ -1,4 +1,4 @@
-package data.structure.queue;
+package data.structure.heap;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -15,7 +15,7 @@ public class MaxHeap<T extends Comparable<T>> extends Heap<T> {
 	
 	
 	public MaxHeap() {
-		super(true);
+		super(10, true);
 	}
 	
 	public MaxHeap(Collection<T> items) {

@@ -43,7 +43,7 @@ public final class Edge<T> implements Comparable<Edge<T>>{
 
 	@Override
 	public String toString() {
-		return v + "---("+this.weight+")-->" + w;
+		return v + "---("+this.weight+")---" + w;
 	}
 	
 	
