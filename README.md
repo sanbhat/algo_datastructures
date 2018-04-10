@@ -32,7 +32,7 @@ The code written in this repository, are not necessarily the original work of me
 	2. [Advanced Data Structures](#advanceds)
 	    1. [Graphs](#advanceds_graphs)
 	    2. [Graph Traversal](#advanceds_graphs_traversal)
-	    3. [UnionFind](#advanceds_unionfind)
+	    3. [UnionFind & ConnectedComponents](#advanceds_unionfind)
 	    4. [Spanning Tree and MST](#advanceds_spanning)
 	    5. [Prim's MST](#advanceds_prims)
 	    6. [Kruskal's MST](#advanceds_kruskal)
@@ -150,17 +150,19 @@ There are two ways in which the graph's vertices can be traversed for searching 
 
 [Cycle Detection](src/main/java/data/structure/graph/undirected/CycleDetection.java) -of undirected graph - is the process of finding, whether a cycle exists or not in the graph, by using DFS path search along with parent back tracking.
 
-**Theory** - If all the adjacent vertex (w) of a particular vertex (v) is visited (marked), then it should be equal to the parent (from which the vertex got searched using dfs). Else, there is a **Cycle<**.
+**Theory** - If all the adjacent vertex (w) of a particular vertex (v) is visited (marked), then it should be equal to the parent (from which the vertex got searched using dfs). Else, there is a **Cycle**.
   
 <a id='advanceds_unionfind' />
 
-#### UnionFind (Undirected)
+#### UnionFind and Connected Components(Undirected)
 
 [UnionFind](src/main/java/data/structure/graph/undirected/UnionFind.java) (or [Disjoint-Set data structure](https://en.wikipedia.org/wiki/Disjoint-set_data_structure)) is a data structure which helps to connect components to form  a set, to track disjoint sets and to see if two components are connected (part of a same set) or not.
 
 The application of this data structure varies from, finding if two Computers are connected within a network (either directly or indirectly), or variable name equivalence tracking in some languages (checking if two aliases point to same variable) to name a few. [This article](https://www.hackerearth.com/practice/notes/disjoint-set-union-union-find/) gives a good insight into the data structure and how it evolved to become more efficient! 
 
 It is also used to detect cycle within the graph, which is used as part of Kruskal's MST algorithm.
+
+[ConnectedComponent](src/main/java/data/structure/graph/undirected/ConnectedComponent.java) is another algorithm to find connected vertices in a graph and dividing the vertices within a graph based on which component they belong to. The application of this algorithm is same as `UnionFind`, but this algorithm is bit slower due to undreneath DFS implementation.
 
 <a id='advanceds_kruskal' />
 
@@ -183,6 +185,26 @@ It is also used to detect cycle within the graph, which is used as part of Krusk
 #### Kruskal's algorithm to find Minimum Spanning Tree (Undirected)
 
 [Kruskal's algorithm](src/main/java/data/structure/graph/undirected/KruskalMST.java) is a simple algorithm, which first orders all the edges of the graph in the ascending order, then adds them to the MST,  by making sure that, edge to be added to the mst, does NOT form a cycle with already existing edges in MST. The check of determining cycle is performed using `UnionFind` data structure.
+
+<a id='advanceds_directedcycle' />  
+
+#### Cycle Detection (Directed)
+
+[Cycle detection on the directed graph](src/main/java/data/structure/graph/directed/DirectedCycleDetection.java), is little bit more work compared to Cycle detection on undirected graph. The algorithm is achieved by doing DFS traversal and tracking the *recursive call stack*.
+
+**Theory** - While doing DFS, If we ever find a directed edge `v->w` to a vertex `w` that is on that stack, we have found a cycle, since the stack is evidence of a directed path from `w` to `v`, and the edge `v->w` completes the cycle.
+
+<a id='advanceds_dfsorder' />  
+
+#### DFS Orders (Directed)
+
+[DepthFirstOder](src/main/java/data/structure/graph/directed/DepthFirstOrder.java) - is the ways in which we record the visited vertices during DFS traversal on the directed graph. There are 3 ways in which we can record the encountered vertices.
+
+**Pre** - In the DFS method, collect the current vertex in a `Queue`, at the beginning of the method - This records the vertices in the same order as they encounter during the DFS traversal.
+
+**Post** - In the DFS method, collect the current vertex in a `Queue`, at the end of the method - This records the vertices in the manner of "Level Order Traversal" from the leaf node to the root node.
+
+**Reverse Post** - In the DFS method, collect the current vertex in a `Stack`, at the end of the method - This records the vertices in *Topological Order*.
 
 <a id='advanceds_dijkstra' />  
 

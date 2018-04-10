@@ -77,15 +77,15 @@ public class Stack<T> implements Iterable<T> {
 	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-		s.append("[ ");
+		s.append("[");
 		boolean hasElements = false;
 		for(Iterator<T> i = iterator(); i.hasNext();) {
 			s.append(i.next()).append(", ");
 			hasElements = true;
 		}
 		if(hasElements)
-			s.deleteCharAt(s.lastIndexOf(", "));
-		s.append(" ]");
+			s.delete(s.lastIndexOf(", "), s.lastIndexOf(", ") + 2);
+		s.append("]");
 		return s.toString();
 	}
 

@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Checks whether a graph is cyclic (has cycle) or acyclic. This is done with the help of DFS and tracking the parent of the lasted visited
+ * Checks whether a graph is cyclic (has cycle) or acyclic. This is done with the help of DFS and tracking the parent of the last visited
  * node. 
  * <p>
  * <b>Theory</b> - If all the adjacent vertex (w) of a particular vertex (v) is visited (marked), then it should be equal to the parent (from which 
@@ -25,7 +25,7 @@ public class CycleDetection<T> {
 		this.marked = new HashSet<>();
 		for(T s : graph.getVertices()) {
 			if(!marked.contains(s))
-				dfs(graph, s, s);
+				dfs(graph, s, s); //initially the source (s) has parent as itself
 		}
 	}
 

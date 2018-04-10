@@ -12,7 +12,8 @@ import java.util.Map;
  * number of vertices.
  * 
  * @author santhosh
- *
+ * 
+ * @param T - type of vertices
  */
 public class GraphAL<T> {
 
