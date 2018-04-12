@@ -36,7 +36,11 @@ The code written in this repository, are not necessarily the original work of me
 	    4. [Spanning Tree and MST](#advanceds_spanning)
 	    5. [Prim's MST](#advanceds_prims)
 	    6. [Kruskal's MST](#advanceds_kruskal)
-	    7. [Dijkstra's SP](#advanceds_dijkstra)
+	    7. [Cycle Detection - Directed Graph](#advanceds_directedcycle)
+	    8. [DFS Order](#advanceds_dfsorder)
+	    9. [Topological Sort](#advanceds_topological_sort)
+	    10. [Kosaraju's Strong Connected Component algorithm](#advanceds_kosarajuscc)
+	    11. [Dijkstra's SP](#advanceds_dijkstra)
 
 <a id='sorting_algo' />
 
@@ -192,7 +196,7 @@ It is also used to detect cycle within the graph, which is used as part of Krusk
 
 [Cycle detection on the directed graph](src/main/java/data/structure/graph/directed/DirectedCycleDetection.java), is little bit more work compared to Cycle detection on undirected graph. The algorithm is achieved by doing DFS traversal and tracking the *recursive call stack*.
 
-**Theory** - While doing DFS, If we ever find a directed edge `v->w` to a vertex `w` that is on that stack, we have found a cycle, since the stack is evidence of a directed path from `w` to `v`, and the edge `v->w` completes the cycle.
+**Theory** - While doing DFS, If we ever find a directed edge `v -> w` to a vertex `w` that is on that stack, we have found a cycle, since the stack is evidence of a directed path from `w` to `v`, and the edge `v -> w` completes the cycle.
 
 <a id='advanceds_dfsorder' />  
 
@@ -205,6 +209,26 @@ It is also used to detect cycle within the graph, which is used as part of Krusk
 **Post** - In the DFS method, collect the current vertex in a `Queue`, at the end of the method - This records the vertices in the manner of "Level Order Traversal" from the leaf node to the root node.
 
 **Reverse Post** - In the DFS method, collect the current vertex in a `Stack`, at the end of the method - This records the vertices in *Topological Order*.
+
+<a id='advanceds_topological_sort' />
+
+#### Topological Sort (Directed)
+
+[Topological Sort](src/main/java/data/structure/graph/directed/TopologicalSort.java) is the process of arranging the vertices of a directed graph in such a way that, for all `v` , `w` in the graph, if there exists a directed edge `v -> w`  ( `v` to `w`) then `v` will appear before `w` in the ordered arrangement. In other words, the Topological Order makes sure that, head vertex is always ahead of tail vertex, for all the head-tail edges. To find the order, the graph must **not** contain **Cycles** (The ordering only works on DAGs).  
+
+<a id='advanceds_kosarajuscc' />
+
+#### Strong Connectivity and Strongly Connected Components (SCC)    (Directed)
+
+In a directed graph, two vertices `v` and `w` are said to be **strongly connected**, if there is a path from `v` to `w` in both the directions, directly or indirectly. A **Strongly connected component (SCC) ** of a graph is a subset of vertices with the graph, which have *strong connectivity* between them. Remember that in a graph having SCC's, there ought to be a Directed Cycle!
+
+[KosarajuSCC algorithm](src/main/java/data/structure/graph/directed/KosarajuSCC.java) helps us to find the SCC within a given directed graph in 3 simple steps.
+
+1. Calculate the **ReversePost** order of transpose `G(r)` of the given digraph `G` 
+2. Iterate through the reverse oder and do the DFS
+3. Increment the counter when one round of DFS ends. The vertices discovered during the round of DFS belong to a single SCC
+	a. Continue the DFS discovery, until all the vertices ordered as per Step 1 exhausts.
+
 
 <a id='advanceds_dijkstra' />  
 

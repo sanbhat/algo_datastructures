@@ -63,4 +63,14 @@ public class Digraph<T> {
 	public int getV() {
 		return v;
 	}
+	
+	public Digraph<T> reverse() {
+		Digraph<T> gR = new Digraph<>(this.v);
+		for(T v : this.vertices) {
+			for(T w : this.adjacent(v)) {
+				gR.addEdge(w, v);
+			}
+		}
+		return gR;
+	}
 }
