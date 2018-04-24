@@ -29,6 +29,7 @@ The code written in this repository, are not necessarily the original work of me
     	3. [Stack](#basicds_stack)
     	4. [Heap](#basicds_heap)
     	5. [IndexMinHeap](#index_min_heap)
+    	6. [Binary Search Tree](#basicds_bst)
 	2. [Advanced Data Structures](#advanceds)
 	    1. [Graphs](#advanceds_graphs)
 	    2. [Graph Traversal](#advanceds_graphs_traversal)
@@ -39,8 +40,8 @@ The code written in this repository, are not necessarily the original work of me
 	    7. [Cycle Detection - Directed Graph](#advanceds_directedcycle)
 	    8. [DFS Order](#advanceds_dfsorder)
 	    9. [Topological Sort](#advanceds_topological_sort)
-	    10. [Kosaraju's Strong Connected Component algorithm](#advanceds_kosarajuscc)
-	    11. [Dijkstra's SP](#advanceds_dijkstra)
+	   10. [Kosaraju's Strong Connected Component algorithm](#advanceds_kosarajuscc)
+	   11. [Dijkstra's SP](#advanceds_dijkstra)
 
 <a id='sorting_algo' />
 
@@ -86,12 +87,17 @@ In singly linked list, `Node` will have a pointer to the `Node` present ahead of
 
 <a id='basicds_stack' />
 
-#### Stack 
-Stack is a popular data structure in which items inserted last will sit on top of the structure, pushing the previously inserted items to the bottom. It gives convenient methods to to check what is at the top of the structure (`peek()`)? and to **get** and **delete** the item on the top of the structure `pop()`, with a time complexity of - &Omicron;(1). It is also called as *LIFO* data-structure. Following are some different implementations of stack, backed by array, singly linked list and doubly linked list.
+#### Queue and Stack 
+Stack is a popular data structure in which items inserted last will sit on top of the structure, pushing the previously inserted items to the bottom. It gives convenient methods to check, what is at the top of the structure (`peek()`)? and to **get** and **delete** the item on the top of the structure (`pop()`), with a time complexity of - &Omicron;(1). It is also called as *LIFO* data-structure. Following are some different implementations of stack, backed by array, singly linked list and doubly linked list.
 
-* [Array based Stack](src/main/java/data/structure/queue/Stack.java) 
+* [Array based Stack](src/main/java/data/structure/queue/Stack.java) - **Bonus!** - This implementation also finds out the minimum element present within the stack with &Omicron;(1) time complexity.
 * [Stack - backed by Singly LinkedList](src/main/java/data/structure/queue/StackSLL.java)
 * [Stack - backed by Doubly LinkedList](src/main/java/data/structure/queue/StackDLL.java)
+
+Queue too is a popular data structure in which items inserted first will sit on *front* of the structure, pushing the next items to be inserted to the *back*. It gives convenient methods to check, what is at the beginning of the structure (`peek()`)? and to **get** and **delete** the item on the front of the structure  (`enQueue()`), with a time complexity of - &Omicron;(1). It is also called as *FIFO* data-structure. Following are some different implementations of queue, backed by array and singly linked list.
+
+* [Array based Queue](src/main/java/data/structure/queue/ArrayBasedQueue.java)
+* [LinkedList based Queue](src/main/java/data/structure/queue/LinkedListBasedQueue.java)
 
 <a id='basicds_heap' />
 
@@ -106,6 +112,15 @@ Heap is a tree based data structure, where each node follows the heap rule. Heap
 #### Index Min Heap
 [IndexMinHeap](src/main/java/data/structure/heap/IndexMinHeap.java) is an extension of Min Heap implementation which associates a particular `Index` with the `Key`. The `Key` will be inserted and used to maintain the heap order, and the `Index` will be mapped with the key, to have a 1-1 mapping between them. When a method such as `getMin()` and `delMin()` is called, the `Index` corresponding to the *minimum* key will be returned by the method.
 
+<a id='basicds_bst' />
+
+#### Binary Search Tree
+[BinarySearchTree](src/main/java/data/structure/tree/BinarySearchTree.java) is one of the most popular **tree** based data structure, which provides efficient means of performing search operation on given set of data. BST is a binary tree (Tree, where each node has max of 2 children), with following unique characteristics.
+
+* All the keys on the left sub-tree of *any* Node `x`, are **less** than the value of `x.key`
+* All the keys on the right sub-tree of *any* Node `x` are **greater** than the value of `x.key`
+
+We can use BST's `get(key)` method to access the data associated with a particular `key`, and we can use `put(key,value)`,  `delete(key)`, `deleteMin()` and `deleteMax()` to modify its content. BST provides effective ways to find out `min()`, `max()`, `floor(key`, `ceiling(key)` and `range(lowKey, highKey)` methods to do various types of search operations on its contents.
 
 <a id='advanceds' />
 

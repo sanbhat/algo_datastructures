@@ -1,6 +1,7 @@
 package data.structure.queue;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -14,29 +15,56 @@ import java.util.NoSuchElementException;
  *
  * @param <T> Type of elements
  */
-@SuppressWarnings("unchecked")
 public class Stack<T> implements Iterable<T> {
 	
-	private Object[] array;
+	private class StackElement<S> {
+		S element;
+		
+		S min;
+		
+		StackElement(S element, S min) {
+			this.element = element;
+			this.min = min;
+		}
+		
+		public String toString() {
+			return "Item - " + this.element + " Min - " + this.min;
+		}
+	}
+	
+	private StackElement<T>[] array;
 	
 	private int top;
 	
 	private int size;
+	
+	private T min;
+	
+	private Comparator<T> comparator;
 	
 	public Stack() {
 		this(10);
 	}
 
 	public Stack(int n) {
-		array = new Object[n];
+		this(n, null);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Stack(int n, Comparator<T> c) {
+		array = new StackElement[n];
 		top = -1;
+		comparator = c;
 	}
 	
 	public void push(T item) {
 		if(top == array.length -1) {
 			ensureCapacity();
 		}
-		array[++top] = item;
+		if(min == null || compare(item, min) < 0) {
+			min = item;
+		}
+		array[++top] = new StackElement<>(item, min);
 		size++;
 	}
 	
@@ -44,7 +72,7 @@ public class Stack<T> implements Iterable<T> {
 		if(top == -1) {
 			return null;
 		}
-		return (T) array[top];
+		return array[top].element;
 	}
 	
 	public T pop() {
@@ -52,11 +80,20 @@ public class Stack<T> implements Iterable<T> {
 			throw new NoSuchElementException("stack is empty!");
 		}
 		
-		T r = (T) array[top];
+		T r = array[top].element;
 		array[top] = null;
 		top--;
+		if(top != -1) {
+			min = array[top].min;
+		} else {
+			min = null;
+		}
 		size--;
 		return r;
+	}
+	
+	public T min() {
+		return min;
 	}
 	
 	public int size() {
@@ -67,6 +104,10 @@ public class Stack<T> implements Iterable<T> {
 		int existingCapacity = array.length;
 		int newCapacity = existingCapacity + (existingCapacity >> 1);
 		array = Arrays.copyOf(array, newCapacity);
+	}
+	
+	private int compare(T t1, T t2) {
+		return comparator == null ? 0 : comparator.compare(t1, t2);
 	}
 	
 	@Override
@@ -106,7 +147,7 @@ public class Stack<T> implements Iterable<T> {
 
 		@Override
 		public T next() {
-			return (T)array[current--];
+			return array[current--].element;
 		}
 		
 	}
