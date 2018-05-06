@@ -26,7 +26,7 @@ The code written in this repository, are not necessarily the original work of me
 	1. [Basic Data Structures](#basicds)
 		1. [Dynamic Array](#basicds_array)
     	2. [Linked List](#basicds_linkedlist)
-    	3. [Stack](#basicds_stack)
+    	3. [Stack and Queue](#basicds_stack)
     	4. [Heap](#basicds_heap)
     	5. [IndexMinHeap](#index_min_heap)
     	6. [Binary Search Tree](#basicds_bst)
@@ -115,12 +115,30 @@ Heap is a tree based data structure, where each node follows the heap rule. Heap
 <a id='basicds_bst' />
 
 #### Binary Search Tree
-[BinarySearchTree](src/main/java/data/structure/tree/BinarySearchTree.java) is one of the most popular **tree** based data structure, which provides efficient means of performing search operation on given set of data. BST is a binary tree (Tree, where each node has max of 2 children), with following unique characteristics.
+[BinarySearchTree](src/main/java/data/structure/tree/BinarySearchTree.java) (a.k.a `TreeMap` or Binary Tree Based Symbol table) is one of the most popular **tree** based data structure, which provides efficient means of performing search operation on given set of data. BST is a binary tree (Tree, where each node has max of 2 children), with following unique characteristics.
 
 * All the keys on the left sub-tree of *any* Node `x`, are **less** than the value of `x.key`
 * All the keys on the right sub-tree of *any* Node `x` are **greater** than the value of `x.key`
 
-We can use BST's `get(key)` method to access the data associated with a particular `key`, and we can use `put(key,value)`,  `delete(key)`, `deleteMin()` and `deleteMax()` to modify its content. BST provides effective ways to find out `min()`, `max()`, `floor(key`, `ceiling(key)` and `range(lowKey, highKey)` methods to do various types of search operations on its contents.
+We can use BST's `get(key)` method to access the data associated with a particular `key`, and we can use `put(key,value)`,  `delete(key)`, `deleteMin()` and `deleteMax()` to modify its content. BST provides effective ways to search keys using following methods - 
+
+*  `min()` - Min key 
+*   `max()` - Max key 
+*   `floor(key)` - Greatest key, smaller than or equal to the passed key parameter 
+*   `ceiling(key)` - Smallest key, greater than or equal to the passed key parameter
+*   `rank(key)` - Number of keys, less than the passed key parameter
+*   `select(rank)` - Returns the key with the passed rank value
+*   `keys()` - All the keys in the BST
+*   `keys(lowKey, hiKey)` - Keys whose values are in the range lowKey - hiKey.
+ 
+
+**Trivia** - Along with the above mentioned popular method, various tree traversal techniques also have been implemented. 
+
+* **Inorder** - Traversal with order, left, root and right. Implementations - `inorderR()` (Recursion based), `inorderI()` (Iterative), `inorderItr()` (Iterator based)
+* **Preorder** - Traversal with order, root, left and right. Implementations - `preorderR()` (Recursion based), `preorderI()` (Iterative), `preorderItr()` (Iterator based)
+* **Postorder** - Traversal with order, left, right and root. Implementations - `postorderR()` (Recursion based), `postorderI()` (Iterative), `postorderItr()` (Iterator based)
+
+
 
 <a id='advanceds' />
 
