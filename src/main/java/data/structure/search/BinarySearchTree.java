@@ -1,4 +1,4 @@
-package data.structure.tree;
+package data.structure.search;
 
 import java.util.ArrayList;
 import java.util.Iterator;

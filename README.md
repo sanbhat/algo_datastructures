@@ -30,6 +30,7 @@ The code written in this repository, are not necessarily the original work of me
     	4. [Heap](#basicds_heap)
     	5. [IndexMinHeap](#index_min_heap)
     	6. [Binary Search Tree](#basicds_bst)
+    	7. [Hashing and Hashtable](#basicds_hash)
 	2. [Advanced Data Structures](#advanceds)
 	    1. [Graphs](#advanceds_graphs)
 	    2. [Graph Traversal](#advanceds_graphs_traversal)
@@ -115,7 +116,7 @@ Heap is a tree based data structure, where each node follows the heap rule. Heap
 <a id='basicds_bst' />
 
 #### Binary Search Tree
-[BinarySearchTree](src/main/java/data/structure/tree/BinarySearchTree.java) (a.k.a `TreeMap` or Binary Tree Based Symbol table) is one of the most popular **tree** based data structure, which provides efficient means of performing search operation on given set of data. BST is a binary tree (Tree, where each node has max of 2 children), with following unique characteristics.
+[BinarySearchTree](src/main/java/data/structure/search/BinarySearchTree.java) (a.k.a `TreeMap` or Binary Tree Based Symbol table) is one of the most popular **tree** based data structure, which provides efficient means of performing search operation on given set of data. BST is a binary tree (Tree, where each node has max of 2 children), with following unique characteristics.
 
 * All the keys on the left sub-tree of *any* Node `x`, are **less** than the value of `x.key`
 * All the keys on the right sub-tree of *any* Node `x` are **greater** than the value of `x.key`
@@ -138,6 +139,29 @@ We can use BST's `get(key)` method to access the data associated with a particul
 * **Preorder** - Traversal with order, root, left and right. Implementations - `preorderR()` (Recursion based), `preorderI()` (Iterative), `preorderItr()` (Iterator based)
 * **Postorder** - Traversal with order, left, right and root. Implementations - `postorderR()` (Recursion based), `postorderI()` (Iterative), `postorderItr()` (Iterator based)
 
+<a id='basicds_hash' />
+
+#### Hashing and Hashtable
+
+`Hashtable` is an array based symbol table implementation, which relies on *Hashing function* to distribute the keys uniformly across the array. Once the keys are uniformly distributed, we can search for a key by calculating its `hash()` value, and converting it into a valid index within the array. The process of converting `hash()` value into array index is called **Modular Hashing**.
+
+		int index = hash(key) % M; // where M is size of the array
+
+There are different ways in which `Hashtable` can be implemented, below are some of them - 
+
+##### Hashing with separate chaining
+
+When we use *Modular Hashing*, there is a good chance of 2 keys being allocated the same index. This phenomenon is called *Hash Collision*. In case of collision, we need a way to represent two or more `<Key, Value>` pairs, hashed to the same index and to solve this, *Separate Chaining* method uses **Array of LinkedLists**. If two keys get allocated same index, those two keys will be appended, one after the other into the LinkedList, stored at that index.
+
+##### Hashing with linear probing
+
+* [Linear probing Hashtable](src/main/java/data/structure/search/LinearProbingHashtable.java) is an array backed, *open addressing* based Hashing methodology, which solves the issue of *Hash Collision* by choosing the closest empty index next to the index given by the `hash()` function. 
+* Incase of *Hash Collision*, the logic is to start with the index given by the `hash()` function and move forward one index at a time, until an empty slot is encountered.
+* All the keys which are found, starting from the hash index until the empty index are referred as the *probe*s of the new key. 
+* While moving forward, if we reach ***end of the array***, then we start over again from the beginning of the array.
+* One of the main criteria for linear probing to work is that - the number of keys `N` should always be less than the size of the array `M`. 
+* The ratio of number of keys to total size of array (`N/M`) is called **load factor**. For an optimal performance, the load factor should be around **0.25 to 0.5** to get efficiency for both memory and running time. 
+* For liner probing, **load factor** cannot be 1 (array cannot be full), because, if that happens, then insertion in case of *hash collision* will run infinitely.
 
 
 <a id='advanceds' />

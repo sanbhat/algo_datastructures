@@ -1,13 +1,16 @@
-package data.structure.tree;
+package data.structure.search;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Iterator;
 
 import org.junit.Test;
 
-public class TreeTest {
+import data.structure.search.BinarySearchTree;
+
+public class SymbolTableTest {
 
 	/**
 	 * Tree looks like below
@@ -83,5 +86,28 @@ public class TreeTest {
 		System.out.println("All keys - " + bst.keys());
 		System.out.println("Keys in range (35-75) - "+bst.keys(35, 75));
 		
+	}
+	
+	@Test
+	public void testLinearProbingHashtable() {
+		LinearProbingHashtable<Integer, String> lph = new LinearProbingHashtable<>();
+		
+		for(int i=0; i<21; i++) {
+			lph.put(i, String.valueOf(i));
+		}
+		
+		System.out.println(lph);
+		
+		for(int i=0; i<21; i++) {
+			assertEquals(String.valueOf(i), lph.get(i));
+		}
+		
+		assertTrue(lph.contains(20));
+		lph.delete(20);
+		assertNull(lph.get(20));
+		lph.delete(1);
+		lph.delete(8);
+		lph.delete(13);
+		System.out.println(lph);
 	}
 }
