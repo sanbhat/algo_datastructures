@@ -30,7 +30,8 @@ The code written in this repository, are not necessarily the original work of me
     	4. [Heap](#basicds_heap)
     	5. [IndexMinHeap](#index_min_heap)
     	6. [Binary Search Tree](#basicds_bst)
-    	7. [Hashing and Hashtable](#basicds_hash)
+    	7. [Balanced Search Tree - Red Black tree](#basicds_rbt)
+    	8. [Hashing and Hashtable](#basicds_hash)
 	2. [Advanced Data Structures](#advanceds)
 	    1. [Graphs](#advanceds_graphs)
 	    2. [Graph Traversal](#advanceds_graphs_traversal)
@@ -138,6 +139,29 @@ We can use BST's `get(key)` method to access the data associated with a particul
 * **Inorder** - Traversal with order, left, root and right. Implementations - `inorderR()` (Recursion based), `inorderI()` (Iterative), `inorderItr()` (Iterator based)
 * **Preorder** - Traversal with order, root, left and right. Implementations - `preorderR()` (Recursion based), `preorderI()` (Iterative), `preorderItr()` (Iterator based)
 * **Postorder** - Traversal with order, left, right and root. Implementations - `postorderR()` (Recursion based), `postorderI()` (Iterative), `postorderItr()` (Iterator based)
+
+<a id='basicds_rbt' />
+
+#### Balanced Search Tree - Red Black tree
+
+The problem with Binary search tree is that, if we insert the elements to it in ascending or descending order, the tree, becomes more or less, like a linear list, giving up the performance characteristic it has of `O(log n)`. The balance of BST, heavily depends on the order at which the elements will be inserted. To solve this, we need a tree based data structure, which balances itself, during the insertion / deletion and makes sure constant `O(log n)` time complexity for most kind of operations.
+
+[RedBlackBST](src/main/java/data/structure/search/RedBlackBST.java) does this by defining some nomenclature and simple rules to maintain the tree structure.
+
+1. The tree can have 2 kinds of Nodes. RED node or BLACK node. The color of a node depends on the color of incoming link from its parent. For exampl, if a Node has parent link of RED, then it is a RED node, or it is a BLACK node.
+2. RED links always lean left.
+3. No node has 2 RED links connected to it
+4. Null links are considered to be BLACK
+5. The tree has perfect BLACK balance. Every path from root to null link has same number of BLACK nodes.
+6. The root of the tree is always a BLACK node
+
+While inserting the nodes, if any of the rules stated above gets violated, then they are fixed using **rotation** and **flipping colors**.
+
+1. If we get a right leaning RED link - then the node representing the root of the right RED leaning tree is **left rotated**.
+2. If a parent has left and right children as RED nodes, then the color of the children are **flipped** with parent.
+3. If we get both parent and child are RED nodes leaning towards the left - then the root of the left leaning tree is **right rotated**, which makes the child new root, having 2 RED children. Now follow step 2.
+
+Deletion in RBT are complicated and involves multiple use-cases, hence it is not covered / implemented here.
 
 <a id='basicds_hash' />
 
