@@ -44,6 +44,11 @@ The code written in this repository, are not necessarily the original work of me
 	    9. [Topological Sort](#advanceds_topological_sort)
 	   10. [Kosaraju's Strong Connected Component algorithm](#advanceds_kosarajuscc)
 	   11. [Dijkstra's SP](#advanceds_dijkstra)
+3. [Strings](#strings)
+	1. [Sorting](#strings_sort)
+		1. [Key Indexed Counting](#strings_sort_kic)
+		2. [LSD String sort](#strings_sort_lsd)
+		3. [MSD String sort](#strings_sort_msd)
 
 <a id='sorting_algo' />
 
@@ -316,3 +321,60 @@ In a directed graph, two vertices `v` and `w` are said to be **strongly connecte
 #### Dijkstra's algorithm to find Shortest Path (Directed)
 
 [Dijkstra's algorithm](src/main/java/data/structure/graph/directed/DijkstraSP.java) is an efficient algorithm, which finds shortest path from a **source** vertex, to all the verties it is connected to (directly / indirectly), by forming a Shortest Path Tree. It takes help of `IndexMinHeap` to get the next vertex to process (thus achieving the &Omicron; (E log V) ), along with a process called as **Edge Relaxation**.
+
+
+<a id='strings' />
+
+## Strings
+
+<a id='strings_sort' />
+
+### Sorting
+
+<a id='strings_sort_kic' />
+
+#### Key Indexed Counting
+
+[Key Indexed Counting](src/main/java/algo/sort/string/KeyIndexedCounting.java) - Is one of the basic sorting technique that is used to mostly sort the strings. 
+
+* It maintains a `count[]` of length 256 (total ASCII characters) to keep track of count of items
+* Count at an index `i + 1` , where `i` represents the index of the string, is updated, for every occurrence of the string (There are multiple ways to derive index from a string (LSD / MSD), which will be discussed later) 
+* Count array is updated to set the range (occurrences are transformed into indices)
+* The items are redistributed, as per the index recorded in the count array
+
+<a id='strings_sort_lsd' />
+
+#### LSD String sort
+
+LSD sorts are an extension of Key Indexed Counting methodology, which is used to sort the strings of equal length `W`. The time complexity of this algorithm is `O(WN)` where `N` is total number of strings to be sorted. 
+
+[LSD sorting](src/main/java/algo/sort/string/LSDSort.java) sorts the array of strings by scanning *least significant digit* first (that is the right most position of the string) and continues to scan till left most position of the string. For each iteration of the position, it uses the **Key Indexed Counting** method to sort the elements, as per the relative order of the character at that particular position. The algorithm moves the position one-by-one from right to left, and moves the elements accordingly within the array, as per the order of the character in the strings at that position. This sorting method is useful to sort strings having same number of characters (same length).
+
+<a id='strings_sort_msd' />
+
+#### MSD String sort
+
+[MSD sorting](src/main/java/algo/sort/string/MSDSort.java) (a.k.a **Radix sort**) - is the best method to sort array of strings having variable length. The process involves scanning the *most significant digit* first (left most position of the string) and continuing till the right most position of the string or the end of string is reached.
+
+Since we are sorting variable length strings, special care must of taken to handle *end of string*. Also, the algorithm makes use of *special purpose Insertion sort*  when the sub-arrays reach below certain threshold, to increase the overall efficiency of the algorithm. Again we use the principle of **Key Indexed Counting** to recursively sort the sub-arrays, until the last character of the longest string is processed or end of string is reached.
+
+#### Three way Quick sort
+
+[3 way Quick sort for strings](src/main/java/algo/sort/string/Quick3StringSort.java) - is another efficient string sorting algorithm, with performance characteristics similar to MSD sort. One advantage of this algorithm over the latter is the amount of less space it takes, in the overall execution of the program.
+
+Three way Quick sort algorithm, divides the array into 3 partitions, where the first partition will have elements less than pivot, second partition will have elements equal to pivot and third partition will have elements greater than pivot.
+
+#### Summary
+
+
+Algorithm | Time Complexity | Space Complexity | Is Inplace? |  Is [Stable?](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) | Best suited for
+--- | --- | --- | --- | --- | ---
+LSD Sort | &Omicron; (NW) | N | No | Yes | short fixed-length strings
+MSD Sort (Radix sort) | Between N and Nw  | N + WR |  | No | Yes | random strings with variable length
+Threeway Quick sort | Between N and Nw | W + logN |  | No | Yes | general-purpose strings with long prefix matches
+
+* `N` - Total number of strings to be sorted
+* `W` - Max length of the strings
+* `w` - Average length of the strings
+* `R` - Total types of characters, that can be used to form a string
+
