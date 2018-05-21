@@ -49,6 +49,8 @@ The code written in this repository, are not necessarily the original work of me
 		1. [Key Indexed Counting](#strings_sort_kic)
 		2. [LSD String sort](#strings_sort_lsd)
 		3. [MSD String sort](#strings_sort_msd)
+		4. [Three way string Quick sort](#strings_sort_quick3)
+		5. [Summary](#strings_sort_summary)
 
 <a id='sorting_algo' />
 
@@ -358,11 +360,15 @@ LSD sorts are an extension of Key Indexed Counting methodology, which is used to
 
 Since we are sorting variable length strings, special care must of taken to handle *end of string*. Also, the algorithm makes use of *special purpose Insertion sort*  when the sub-arrays reach below certain threshold, to increase the overall efficiency of the algorithm. Again we use the principle of **Key Indexed Counting** to recursively sort the sub-arrays, until the last character of the longest string is processed or end of string is reached.
 
+<a id='strings_sort_quick3' />
+
 #### Three way Quick sort
 
 [3 way Quick sort for strings](src/main/java/algo/sort/string/Quick3StringSort.java) - is another efficient string sorting algorithm, with performance characteristics similar to MSD sort. One advantage of this algorithm over the latter is the amount of less space it takes, in the overall execution of the program.
 
 Three way Quick sort algorithm, divides the array into 3 partitions, where the first partition will have elements less than pivot, second partition will have elements equal to pivot and third partition will have elements greater than pivot.
+
+<a id='strings_sort_summary' />
 
 #### Summary
 
@@ -370,8 +376,8 @@ Three way Quick sort algorithm, divides the array into 3 partitions, where the f
 Algorithm | Time Complexity | Space Complexity | Is Inplace? |  Is [Stable?](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability) | Best suited for
 --- | --- | --- | --- | --- | ---
 LSD Sort | &Omicron; (NW) | N | No | Yes | short fixed-length strings
-MSD Sort (Radix sort) | Between N and Nw  | N + WR |  | No | Yes | random strings with variable length
-Threeway Quick sort | Between N and Nw | W + logN |  | No | Yes | general-purpose strings with long prefix matches
+MSD Sort (Radix sort) | Between N and Nw  | N + WR | No | Yes | random strings with variable length
+Threeway Quick sort | Between N and Nw | W + logN | Yes | No | general-purpose strings with long prefix matches
 
 * `N` - Total number of strings to be sorted
 * `W` - Max length of the strings
