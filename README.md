@@ -51,6 +51,8 @@ The code written in this repository, are not necessarily the original work of me
 		3. [MSD String sort](#strings_sort_msd)
 		4. [Three way string Quick sort](#strings_sort_quick3)
 		5. [Summary](#strings_sort_summary)
+	2. [Tries](#strings_tries)
+		1. [R-way Trie ST](#strings_tries_rway)
 
 <a id='sorting_algo' />
 
@@ -383,4 +385,27 @@ Threeway Quick sort | Between N and Nw | W + logN | Yes | No | general-purpose s
 * `W` - Max length of the strings
 * `w` - Average length of the strings
 * `R` - Total types of characters, that can be used to form a string
+
+<a id='strings_tries' />
+
+### Tries
+
+Trie is a data structure, which enables us to search a particular string by tracing the path along each characters within the string. There are multiple implementations of this data structure, we will consider some of them.
+
+<a id='strings_tries_rway' />
+
+#### R-way Tries
+
+In [R-way trie](src/main/java/data/structure/tries/TrieST.java), each node will have R possible paths, going down from them, where R represents the **radix** (which is 256 characters present in ASCII character set). In the `TrieST`, we will have key as concrete `String` type and value as generic. Following methods are supported by the data structure.
+
+* `get(String key)` - Gets the value associated with a particular string `key`
+* `put(String key, V value)` - Associates a `value` with a particular `key`
+* `keys()` - Lists all the keys, inserted into the trie.
+* `keysWithPrefix(String prefix)` - Lists all the keys, which starts with the prefix 
+* `keysThatMatch(String pattern)` - Lists all the keys, which match a wildcard pattern.
+* `longestPrefixKeyOf(String s)` - Gives a key, which is the longest prefix of given string `s`
+* `delete(String key)` - deletes a particular key
+
+**Time Complexity** - Search hit - `&Omicron;(W)`,  Search miss `&Omicron;(log [base R]  N )` - where `R` is radix, `W` is length of the string and `N` is total number of strings in trie.
+**Space Complexity** - Between `RN` and `RNw` where `w` is average length of the strings.
 
