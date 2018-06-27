@@ -406,6 +406,14 @@ In [R-way trie](src/main/java/data/structure/tries/TrieST.java), each node will 
 * `longestPrefixKeyOf(String s)` - Gives a key, which is the longest prefix of given string `s`
 * `delete(String key)` - deletes a particular key
 
-**Time Complexity** - Search hit - `&Omicron;(W)`,  Search miss `&Omicron;(log [base R]  N )` - where `R` is radix, `W` is length of the string and `N` is total number of strings in trie.
+**Time Complexity** - Search hit - `O(W)`,  Search miss `O(log [base R]  N )` - where `R` is radix, `W` is length of the string and `N` is total number of strings in trie.
+
 **Space Complexity** - Between `RN` and `RNw` where `w` is average length of the strings.
 
+#### Ternary Search Tries
+
+[Ternary Search Tries](src/main/java/data/structure/tries/TernarySearchTrie.java)    (TSTs) addresses the shortcoming of the R-way Tries where each node occupies the R-links corresponding to each characters, by having only three links in each node. In addition the node will have a character and a value.The three links corresponds to keys whose current characters are less than, equal to or greater than the node's character.The concept is similar to Binary Search Tree.
+
+**Time Complexity** - The time complexity of search/insertion operation are `O(log N)` where `N` is the average number of keys inserted into the Trie.
+
+**Space Complexity** - Space required to store `N` keys with an average length of `w` is between `3N` and `3Nw`.
