@@ -13,7 +13,7 @@ import java.util.Map;
  * 
  * @author santhosh
  * 
- * @param T - type of vertices
+ * @param <T> - type of vertices
  */
 public class GraphAL<T> {
 
@@ -44,6 +44,7 @@ public class GraphAL<T> {
 			adj.get(v).remove(w);
 		if(adj.containsKey(w) && adj.get(w).contains(v))
 			adj.get(w).remove(v);
+		this.e--;
 	}
 	
 	public Iterable<T> adjacent(T v) {

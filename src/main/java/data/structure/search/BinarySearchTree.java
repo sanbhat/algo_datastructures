@@ -57,7 +57,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
 	private Node<K, V> root;
 	
 	/**
-	 * Size of this BST. Equivalent of finding {@link BinarySearchTree#size(root)}
+	 * Size of this BST. Equivalent of finding {@link BinarySearchTree#size(Node)}
 	 * @return total number of nodes in this tree
 	 */
 	public int size() {

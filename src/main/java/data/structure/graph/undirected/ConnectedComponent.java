@@ -6,10 +6,10 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Connected Component algorithm helps us to find the following
- * <li> Whether 2 vertices in a graph are connected or not (and thus belong to same component)
- * <li> Get the number of different components present in the graph
- * <li> List the vertices belonging to each components
+ * Connected Component algorithm helps us find the following
+ * <li> Whether 2 vertices in a graph are connected or not (and thus belong to same component).
+ * <li> Get the number of different components present in the graph.
+ * <li> List the vertices belonging to each component.
  * 
  * @author santhosh
  * 

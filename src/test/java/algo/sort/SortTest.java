@@ -34,7 +34,7 @@ public class SortTest {
 		Utility.isSorted(arr, true);
 		System.out.println(Arrays.toString(arr));
 		
-		arr =new int[] {5, 4, 1 , 3, 2};
+		arr =new int[] {1,2,3,4,5};
 		sort.sort2(arr);
 		Utility.isSorted(arr, true);
 		System.out.println(Arrays.toString(arr));
@@ -60,7 +60,7 @@ public class SortTest {
 	
 	@Test
 	public void testQuickSort() {
-		Integer[] arr = {99, 1, 10, -98, 101, 15, 7, 55, -48, 75, 0, -11, -12, 88, 9, 6, 3, 2, 101, 1002, -999, 1110, 28, 17, 43, 35, 87};
+		Integer[] arr = {9, 1, 3, 5, 2};
 		QuickSort<Integer> quickSort = new QuickSort<>();
 		quickSort.sort(arr);
 		Utility.isSorted(arr, true);
